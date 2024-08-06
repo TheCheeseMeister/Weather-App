@@ -21,7 +21,6 @@ async function searchLocation(location) {
 
     const response = await fetch(link, {mode: 'cors'});
     const weatherData = await response.json();
-    console.log(weatherData);
     buildPage(weatherData);
 }
 

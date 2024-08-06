@@ -74,7 +74,6 @@ export function buildPage(weatherData) {
     let i = 0;
 
     do {
-        console.log(currHour);
         const time = document.createElement('div');
         time.classList.add('test');
 
@@ -108,5 +107,61 @@ export function buildPage(weatherData) {
     header.appendChild(icon);
     header.appendChild(times);
 
+    // Content
+    const content = document.createElement('div');
+    content.classList.add('content');
+
+    const stats = document.createElement('div');
+    stats.classList.add('stats');
+
+    // -- lots of p definitions
+    const rise = document.createElement('p');
+    rise.textContent = `Sunrise: ${weatherData.currentConditions.sunrise}`;
+
+    const set = document.createElement('p');
+    set.textContent = `Sunset: ${weatherData.currentConditions.sunset}`;
+
+    const chanceRain = document.createElement('p');
+    chanceRain.textContent = `Chance of Rain: ${weatherData.days[0].precipprob}%`;
+
+    const humidity = document.createElement('p');
+    humidity.textContent = `Humidity: ${weatherData.days[0].humidity}%`;
+
+    const wind = document.createElement('p');
+    wind.textContent = `Wind: Something mph lol`;
+
+    const feel = document.createElement('p');
+    feel.textContent = `Feels Like: ${weatherData.currentConditions.feelslike}`;
+
+    const precipitation = document.createElement('p');
+    precipitation.textContent = `Precipitation: ${weatherData.currentConditions.precip} in`;
+
+    stats.appendChild(rise);
+    stats.appendChild(set);
+    stats.appendChild(chanceRain);
+    stats.appendChild(humidity);
+    stats.appendChild(wind);
+    stats.appendChild(feel);
+    stats.appendChild(precipitation);
+
+    const alerts = document.createElement('div');
+    alerts.classList.add('alerts');
+
+    const alertHead = document.createElement('h3');
+    alertHead.textContent = `Alerts (${weatherData.alerts.length})`;
+
+    alerts.appendChild(alertHead);
+
+    for (i = 0; i < weatherData.alerts.length; i++) {
+        const temp = document.createElement('div');
+        temp.classList.add('alert');
+        temp.textContent = weatherData.alerts[i].event;
+        alerts.appendChild(temp);
+    }
+
+    content.appendChild(stats);
+    content.appendChild(alerts);
+
     container.appendChild(header);
+    container.appendChild(content);
 }
