@@ -1,3 +1,5 @@
+import './style.css';
+
 // [location]/[date1]/[date2]?key=YOUR_API_KEY
 const baseLink = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"
 const apiKey = 'TGLBQYWMH8JGJB32WSP2U4T8Z';
